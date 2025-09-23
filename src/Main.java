@@ -1,4 +1,7 @@
 import dao.DatabaseConnection;
+import model.Conseiller;
+import service.ConseillerService;
+import view.ConseillerView;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,9 +11,9 @@ import java.util.stream.Collectors;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
-            DatabaseConnection db1 = DatabaseConnection.getInstance();
+         /*   DatabaseConnection db1 = DatabaseConnection.getInstance();
             DatabaseConnection db2 = DatabaseConnection.getInstance();
 
             // Vérifier que c'est bien le même objet (Singleton)
@@ -23,7 +26,10 @@ public class Main {
             } else {
                 System.out.println("Échec de la connexion.");
             }
-    }
-    }
+    }*/
+        ConseillerView view = new ConseillerView();
+        view.afficherMenu();
 
+    }
+}
 
