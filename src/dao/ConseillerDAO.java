@@ -27,5 +27,17 @@ public class ConseillerDAO {
             System.out.println("Erreur lors de l'ajout du conseiller : " + e.getMessage());
         }
     }
+    public void supprimerConseiller(Conseiller conseiller) {
+        try {
+            String sql = "DELETE FROM conseiller WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, conseiller.getId());
+            stmt.executeUpdate();
+            System.out.println("Conseiller supprime !");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression  du conseiller : " + e.getMessage());
+        }
+    }
+
 
 }

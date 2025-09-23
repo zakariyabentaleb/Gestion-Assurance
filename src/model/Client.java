@@ -12,6 +12,10 @@ public class Client extends Person {
         this.conseiller = conseiller ;
         this.contrats= new ArrayList<>();
     }
+    public Client() {
+        super();
+        this.contrats = new ArrayList<>();
+    }
 
     public List<Contrat> getContrats() {
         return contrats;

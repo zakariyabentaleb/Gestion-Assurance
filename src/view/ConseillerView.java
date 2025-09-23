@@ -20,7 +20,8 @@ public class ConseillerView {
         do {
             System.out.println("\n===== Gestion des Conseillers =====");
             System.out.println("1. Ajouter un conseiller");
-            System.out.println("2. Quitter");
+            System.out.println("2. Supprimer un conseiller");
+            System.out.println("3. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine(); // consommer le retour
@@ -30,6 +31,9 @@ public class ConseillerView {
                     ajouterConseiller();
                     break;
                 case 2:
+                    supprimerConseiller();
+                    break;
+                case 3:
                     System.out.println("Au revoir !");
                     break;
                 default:
@@ -48,5 +52,12 @@ public class ConseillerView {
 
         Conseiller conseiller = new Conseiller(0, nom, prenom, email);
         conseillerService.ajouterConseiller(conseiller);
+    }
+    private void supprimerConseiller() {
+        System.out.print("Entrez l'Id du Conseiller :  ");
+        int  id = scanner.nextInt();
+        Conseiller conseiller = new Conseiller();
+        conseiller.setId(id);
+        conseillerService.supprimerConseiller(conseiller);
     }
 }

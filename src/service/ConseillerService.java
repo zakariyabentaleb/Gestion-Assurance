@@ -19,5 +19,14 @@ public class ConseillerService {
             System.out.println("Impossible d'ajouter un conseiller nul !");
         }
     }
+    public void supprimerConseiller(Conseiller conseiller) {
+        if (conseiller != null) {
+            conseillerDAO.supprimerConseiller(conseiller);
+            System.out.println("Conseiller suprimer : " + conseiller.getId());
+        } else {
+            System.out.println("Impossible de supprimer un conseiller  !");
+        }
+    }
+
 
 }

@@ -11,6 +11,12 @@ public class Conseiller extends Person {
         super(id, nom, prenom, email);
         this.clients = new ArrayList<>();
     }
+
+    public Conseiller() {
+        super();
+        this.clients = new ArrayList<>();
+    }
+
     public List<Client> getClients() {
         return clients;
     }

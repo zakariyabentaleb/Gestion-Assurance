@@ -12,6 +12,8 @@ public class Person {
            this.prenom = prenom ;
            this.email= email ;
       }
+    public Person() {
+    }
 
        public  int getId(){
           return id ;
@@ -22,7 +24,7 @@ public class Person {
       }
 
       public  String getPrenom(){
-        return nom ;
+        return prenom ;
       }
 
       public  String getEmail(){
