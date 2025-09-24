@@ -3,6 +3,8 @@ package service;
 import dao.ConseillerDAO;
 import model.entities.Conseiller;
 
+import java.util.List;
+
 public class ConseillerService {
 
     private ConseillerDAO conseillerDAO;
@@ -26,6 +28,22 @@ public class ConseillerService {
         } else {
             System.out.println("Impossible de supprimer un conseiller  !");
         }
+    }
+    public void ListerConseiller() {
+        List<Conseiller> conseillers = conseillerDAO.ListerConseiller();
+
+        if (conseillers.isEmpty()) {
+            System.out.println("Aucun conseiller trouvé !");
+        } else {
+            for (Conseiller c : conseillers) {
+                System.out.println("ID: " + c.getId() + ", Nom: " + c.getNom() + ", Prénom: " + c.getPrenom() + ", Email: " + c.getEmail());
+            }
+        }
+    }
+
+    public Conseiller RechercheConseiller(int id) {
+
+        return conseillerDAO.RechercheConseiller(id);
     }
 
 
