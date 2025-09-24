@@ -1,12 +1,4 @@
-import dao.DatabaseConnection;
-import model.Conseiller;
-import service.ConseillerService;
 import view.ConseillerView;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.stream.Collectors;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

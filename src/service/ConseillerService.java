@@ -1,7 +1,7 @@
 package service;
 
 import dao.ConseillerDAO;
-import model.Conseiller;
+import model.entities.Conseiller;
 
 public class ConseillerService {
 

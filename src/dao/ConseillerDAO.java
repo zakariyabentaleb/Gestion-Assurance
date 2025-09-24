@@ -2,7 +2,7 @@ package dao;
 
 import java.sql.Connection;
 
-import model.Conseiller;
+import model.entities.Conseiller;
 import java.sql.*;
 
 

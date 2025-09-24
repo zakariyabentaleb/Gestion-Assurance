@@ -1,6 +1,6 @@
 package view;
 
-import model.Conseiller;
+import model.entities.Conseiller;
 import service.ConseillerService;
 
 import java.util.Scanner;
