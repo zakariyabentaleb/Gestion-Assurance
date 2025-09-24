@@ -17,6 +17,11 @@ public class Client extends Person {
         this.contrats = new ArrayList<>();
     }
 
+    public Client(int i, String nom, String prenom, String email) {
+        super(i,nom,prenom,email);
+    }
+
+
     public List<Contrat> getContrats() {
         return contrats;
     }
