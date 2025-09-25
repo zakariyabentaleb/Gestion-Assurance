@@ -27,8 +27,9 @@ public class ClientView {
             System.out.println("1. Ajouter un client");
             System.out.println("2. Supprimer un client");
             System.out.println("3. Lister tous les clients");
-            System.out.println("4. recherche un client");
-            System.out.println("5. Quitter");
+            System.out.println("4. recherche un client par son id");
+            System.out.println("5. recherche un client par son nom");
+            System.out.println("6. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine();
@@ -45,10 +46,14 @@ public class ClientView {
                     break;
 
                 case 4:
-                    RechercheClient();
+                    RechercheClientParId();
                     break;
 
-                case 5 :
+                case 5:
+                    RechercheClientParNom();
+                    break;
+
+                case 6 :
                     System.out.println("Au revoir !");
                     break;
 
@@ -78,7 +83,7 @@ public class ClientView {
         client.setId(id);
         ClientService.supprimerClient(client);
     }
-    private void RechercheClient() {
+    private void RechercheClientParId() {
         System.out.print("Entrez l'ID du client à rechercher : ");
         int id = scanner.nextInt();
         Optional<Client> client = ClientService.findClientById(id);
@@ -88,6 +93,19 @@ public class ClientView {
         } else {
             System.out.println("Aucun conseiller trouvé avec cet ID.");
         }
+
+    }
+    private void RechercheClientParNom() {
+        System.out.print("Entrez le nom du client à rechercher : ");
+        String nom = scanner.nextLine();
+        Optional<Client> client = ClientService.findClientByNom(nom);
+
+        if (client.isPresent()) {
+            System.out.println("Conseiller trouvé : " + client.get().getNom() + " " + client.get().getPrenom());
+        } else {
+            System.out.println("Aucun conseiller trouvé avec cet ID.");
+        }
+
     }
 
 }

@@ -35,4 +35,10 @@ public class ClientService {
                 .filter(c -> c.getId() == id)
                 .findFirst();
     }
+    public static Optional<Client> findClientByNom(String nom) {
+        return ClientDAO.ListerClient()
+                .stream()
+                .filter(c -> c.getNom().equals(nom))
+                .findFirst();
+    }
 }
