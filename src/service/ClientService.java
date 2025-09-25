@@ -5,6 +5,8 @@ import dao.ConseillerDAO;
 import model.entities.Client;
 import model.entities.Conseiller;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
 public class ClientService {
@@ -40,5 +42,11 @@ public class ClientService {
                 .stream()
                 .filter(c -> c.getNom().equals(nom))
                 .findFirst();
+    }
+    public static List<Client> TrierParOrdreAlph() {
+        return ClientDAO.ListerClient()
+                .stream()
+                .sorted(Comparator.comparing(Client::getNom)) // tri par nom
+                .toList();
     }
 }

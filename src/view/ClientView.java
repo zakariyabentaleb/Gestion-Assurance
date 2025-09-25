@@ -5,6 +5,7 @@ import model.entities.Conseiller;
 import service.ClientService;
 
 import java.sql.SQLOutput;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -29,7 +30,8 @@ public class ClientView {
             System.out.println("3. Lister tous les clients");
             System.out.println("4. recherche un client par son id");
             System.out.println("5. recherche un client par son nom");
-            System.out.println("6. Quitter");
+            System.out.println("6. tri par ordre alphabetique");
+            System.out.println("7. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine();
@@ -53,7 +55,11 @@ public class ClientView {
                     RechercheClientParNom();
                     break;
 
-                case 6 :
+                case 6:
+                    TrierParOrdreAlphab();
+                    break;
+
+                case 7 :
                     System.out.println("Au revoir !");
                     break;
 
@@ -105,8 +111,12 @@ public class ClientView {
         } else {
             System.out.println("Aucun conseiller trouvé avec cet ID.");
         }
-
     }
+    private void TrierParOrdreAlphab() {
+        List<Client> sorted = ClientService.TrierParOrdreAlph();
+        sorted.forEach(c -> System.out.println(c.getNom() + " " + c.getPrenom()));
+    }
+
 
 }
 
