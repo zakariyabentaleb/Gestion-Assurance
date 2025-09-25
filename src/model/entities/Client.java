@@ -21,7 +21,6 @@ public class Client extends Person {
         super(i,nom,prenom,email);
     }
 
-
     public List<Contrat> getContrats() {
         return contrats;
     }
@@ -46,7 +45,6 @@ public class Client extends Person {
     public void supprimerContrat(Contrat contrat) {
         contrats.remove(contrat);
     }
-
 
     @Override
     public String toString() {

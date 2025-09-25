@@ -5,6 +5,7 @@ import model.entities.Conseiller;
 import service.ClientService;
 
 import java.sql.SQLOutput;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ClientView {
@@ -24,27 +25,27 @@ public class ClientView {
         do {
             System.out.println("\n===== Gestion des clients =====");
             System.out.println("1. Ajouter un client");
-            System.out.println("2. Supprimer un conseiller");
-            System.out.println("3. Lister tous les conseillers");
-            System.out.println("4. recherche un Conseiller");
+            System.out.println("2. Supprimer un client");
+            System.out.println("3. Lister tous les clients");
+            System.out.println("4. recherche un client");
             System.out.println("5. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
-            scanner.nextLine(); // consommer le retour
+            scanner.nextLine();
 
             switch (choix) {
                 case 1:
                     ajouterClient();
                     break;
                 case 2:
-
+                    supprimerClient();
                     break;
                 case 3:
 
                     break;
 
                 case 4:
-
+                    RechercheClient();
                     break;
 
                 case 5 :
@@ -70,5 +71,24 @@ public class ClientView {
 
         ClientService.ajouterClient(client);
     }
+    private void supprimerClient() {
+        System.out.print("Entrez l'Id du Client :  ");
+        int  id = scanner.nextInt();
+        Client client = new Client();
+        client.setId(id);
+        ClientService.supprimerClient(client);
+    }
+    private void RechercheClient() {
+        System.out.print("Entrez l'ID du client à rechercher : ");
+        int id = scanner.nextInt();
+        Optional<Client> client = ClientService.findClientById(id);
+
+        if (client.isPresent()) {
+            System.out.println("Conseiller trouvé : " + client.get().getNom() + " " + client.get().getPrenom());
+        } else {
+            System.out.println("Aucun conseiller trouvé avec cet ID.");
+        }
+    }
+
 }
 

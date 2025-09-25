@@ -1,6 +1,7 @@
 package dao;
 
 import model.entities.Client;
+import model.entities.Conseiller;
 
 
 import java.sql.Connection;
@@ -29,6 +30,38 @@ public class ClientDAO {
         } catch (SQLException e) {
             System.out.println("Erreur lors de l'ajout du client : " + e.getMessage());
         }
+    }
+    public void supprimerClient(Client client) {
+        try {
+            String sql = "DELETE FROM client WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, client.getId());
+            stmt.executeUpdate();
+            System.out.println("Conseiller supprime !");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression  du conseiller : " + e.getMessage());
+        }
+    }
+    public List<Client> ListerClient() {
+        List<Client> clients = new ArrayList<>();
+        Client client = null;
+        try {
+            String sql = "SELECT * FROM client";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                client = new Client();
+                client.setId(rs.getInt("id"));
+                client.setNom(rs.getString("nom"));
+                client.setPrenom(rs.getString("prenom"));
+                client.setEmail(rs.getString("email"));
+                clients.add(client);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la recherche du conseiller : " + e.getMessage());
+        }
+        return clients;
     }
 
 

@@ -22,7 +22,7 @@ public class ConseillerView {
             System.out.println("1. Ajouter un conseiller");
             System.out.println("2. Supprimer un conseiller");
             System.out.println("3. Lister tous les conseillers");
-            System.out.println("4. recherche un Conseiller");
+            System.out.println("4. recherche un Conseiller par son id");
             System.out.println("5. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
@@ -77,8 +77,7 @@ public class ConseillerView {
     }
     private void RechercheConseiller() {
         System.out.print("Entrez l'ID du conseiller à rechercher : ");
-        int id = scanner.nextInt(); // on lit l'ID de l'utilisateur
-
+        int id = scanner.nextInt();
         Conseiller conseiller = conseillerService.RechercheConseiller(id); // Service retourne le conseiller ou null
 
         if (conseiller != null) {
