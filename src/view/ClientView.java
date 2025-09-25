@@ -18,7 +18,6 @@ public class ClientView {
     public ClientView() {
         this.clientService = new ClientService();
 
-
     }
 
     public void afficherMenu() {
@@ -44,7 +43,7 @@ public class ClientView {
                     supprimerClient();
                     break;
                 case 3:
-
+                    ListerClient();
                     break;
 
                 case 4:
@@ -66,7 +65,7 @@ public class ClientView {
                 default:
                     System.out.println("Choix invalide !");
             }
-        } while (choix != 2);
+        } while (choix != 7);
     }
 
     private void ajouterClient() {
@@ -115,6 +114,10 @@ public class ClientView {
     private void TrierParOrdreAlphab() {
         List<Client> sorted = ClientService.TrierParOrdreAlph();
         sorted.forEach(c -> System.out.println(c.getNom() + " " + c.getPrenom()));
+    }
+    private void ListerClient() {
+        System.out.print("Voila tous les Client :  ");
+        ClientService.ListerClient();
     }
 
 

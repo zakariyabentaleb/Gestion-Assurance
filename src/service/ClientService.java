@@ -49,4 +49,15 @@ public class ClientService {
                 .sorted(Comparator.comparing(Client::getNom)) // tri par nom
                 .toList();
     }
+    public static void ListerClient() {
+        List<Client> client = ClientDAO.ListerClient();
+
+        if (client.isEmpty()) {
+            System.out.println("Aucun conseiller trouvé !");
+        } else {
+            for (Client c : client) {
+                System.out.println("ID: " + c.getId() + ", Nom: " + c.getNom() + ", Prénom: " + c.getPrenom() + ", Email: " + c.getEmail());
+            }
+        }
+    }
 }

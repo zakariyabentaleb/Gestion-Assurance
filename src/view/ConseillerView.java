@@ -50,7 +50,7 @@ public class ConseillerView {
                 default:
                     System.out.println("Choix invalide !");
             }
-        } while (choix != 2);
+        } while (choix != 5);
     }
 
     private void ajouterConseiller() {

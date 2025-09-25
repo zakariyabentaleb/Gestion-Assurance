@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Conseiller extends Person {
 
-    private List<Client> clients;
+     private List<Client> clients;
 
     public Conseiller(int id, String nom, String prenom, String email) {
         super(id, nom, prenom, email);
