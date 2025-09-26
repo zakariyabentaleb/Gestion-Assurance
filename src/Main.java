@@ -12,3 +12,4 @@ public class Main {
         menuView.afficherMenu();
     }
 }
+

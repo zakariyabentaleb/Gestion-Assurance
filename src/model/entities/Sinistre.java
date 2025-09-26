@@ -24,6 +24,10 @@ public class Sinistre {
         this.contrat = contrat;
     }
 
+    public Sinistre() {
+
+    }
+
     public int getId() {
         return id;
     }
