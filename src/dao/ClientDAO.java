@@ -42,7 +42,7 @@ public class ClientDAO {
             System.out.println("Erreur lors de la suppression  du conseiller : " + e.getMessage());
         }
     }
-    public List<Client> ListerClient() {
+    public static List<Client> ListerClient() {
         List<Client> clients = new ArrayList<>();
         Client client = null;
         try {

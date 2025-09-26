@@ -46,7 +46,7 @@ public class ContratView {
                     supprimerContrat();
                     break;
                 case 3:
-
+                    ListerContrat();
                     break;
 
                 case 4:
@@ -129,6 +129,11 @@ public class ContratView {
         Contrat contrat = new Contrat();
         contrat.setId(id);
         ContratService.supprimerContrat(contrat);
+    }
+    private static void ListerContrat() {
+        System.out.print("Voila tous les Contrats :  ");
+        ContratService.ListerContrat();
+
     }
 
 

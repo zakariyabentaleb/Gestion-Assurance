@@ -1,9 +1,7 @@
 package service;
 
 import dao.ClientDAO;
-import dao.ConseillerDAO;
 import model.entities.Client;
-import model.entities.Conseiller;
 
 import java.util.Comparator;
 import java.util.List;
@@ -49,7 +47,7 @@ public class ClientService {
                 .sorted(Comparator.comparing(Client::getNom)) // tri par nom
                 .toList();
     }
-    public static void ListerClient() {
+    public static List<Client> ListerClient() {
         List<Client> client = ClientDAO.ListerClient();
 
         if (client.isEmpty()) {
@@ -59,5 +57,6 @@ public class ClientService {
                 System.out.println("ID: " + c.getId() + ", Nom: " + c.getNom() + ", Prénom: " + c.getPrenom() + ", Email: " + c.getEmail());
             }
         }
+        return client;
     }
 }

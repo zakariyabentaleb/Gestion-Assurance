@@ -15,7 +15,7 @@ public class Contrat {
     private Client client;
     private List<Sinistre> sinistres;
 
-    public Contrat(int id, TypeContrat typeContrat, LocalDate dateDebut, LocalDate dateFin, Client client) {
+    public Contrat(int id, TypeContrat typeContrat, LocalDate dateDebut, LocalDate dateFin,Client client) {
         this.id = id;
         this.typeContrat = typeContrat;
         this.dateDebut = dateDebut;

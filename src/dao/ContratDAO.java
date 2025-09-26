@@ -1,9 +1,15 @@
 package dao;
 
+import model.entities.Client;
 import model.entities.Conseiller;
 import model.entities.Contrat;
+import model.enums.TypeContrat;
+import service.ClientService;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class ContratDAO {
 
@@ -43,6 +49,35 @@ public class ContratDAO {
         } catch (SQLException e) {
             System.out.println("Erreur lors de la suppression  du client : " + e.getMessage());
         }
+    }
+    public static List<Contrat> ListerContrat() {
+        List<Contrat> contratss = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM contrat";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int clientId = rs.getInt("client_id");
+
+
+             //   Optional<Client> clientOpt = ClientService.findClientById(clientId);
+              Client client = null;
+
+                Contrat contrat = new Contrat(
+                        rs.getInt("id"),
+                        TypeContrat.valueOf(rs.getString("type_contrat")),
+                        rs.getDate("date_debut").toLocalDate(),
+                        rs.getDate("date_fin").toLocalDate(),
+                        client
+                );
+                contratss.add(contrat);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la listage des contrats : " + e.getMessage());
+        }
+
+        return contratss;
     }
 
 

@@ -2,14 +2,17 @@ package service;
 
 import dao.ClientDAO;
 import dao.ContratDAO;
+import model.entities.Client;
 import model.entities.Conseiller;
 import model.entities.Contrat;
+
+import java.util.List;
 
 public class ContratService {
 
     private static ContratDAO contratDAO;
     public ContratService() {
-        contratDAO = new ContratDAO();
+      contratDAO = new ContratDAO();
     }
     public static void ajouterContrat(Contrat contrat) {
         if (contrat != null) {
@@ -27,4 +30,24 @@ public class ContratService {
             System.out.println("Impossible de supprimer un conseiller  !");
         }
     }
+   public static void ListerContrat() {
+        List<Contrat> contrats = ContratDAO.ListerContrat();
+
+        if (contrats.isEmpty()) {
+            System.out.println("Aucun contrat trouvé !");
+            return ;
+        }
+       contrats.stream()
+               .forEach(c -> {
+
+                   System.out.println(
+                           "ID Contrat: " + c.getId() +
+                                   ", Type: " + c.getTypeContrat() +
+                                   ", Début: " + c.getDateDebut() +
+                                   ", Fin: " + c.getDateFin()
+
+                   );
+               });
+    }
+
 }
