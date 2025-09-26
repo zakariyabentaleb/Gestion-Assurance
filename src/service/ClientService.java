@@ -6,6 +6,7 @@ import model.entities.Client;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ClientService {
     private static ClientDAO ClientDAO;
@@ -47,7 +48,7 @@ public class ClientService {
                 .sorted(Comparator.comparing(Client::getNom)) // tri par nom
                 .toList();
     }
-    public static List<Client> ListerClient() {
+   /* public static List<Client> ListerClient() {
         List<Client> client = ClientDAO.ListerClient();
 
         if (client.isEmpty()) {
@@ -58,5 +59,30 @@ public class ClientService {
             }
         }
         return client;
+    }*/
+
+    public static List<Client> ListerClient(int conseillerId) {
+        List<Client> clients = ClientDAO.ListerClient(); // récupère tous les clients
+
+        // Filtrer les clients qui appartiennent au conseiller
+        List<Client> clientsFiltres = clients.stream()
+                .filter(c -> c.getConseiller() != null && c.getConseiller().getId() == conseillerId)
+                .collect(Collectors.toList()); // Java 8
+
+        if (clientsFiltres.isEmpty()) {
+            System.out.println("⚠️ Aucun client trouvé pour le conseiller ID " + conseillerId);
+        } else {
+            System.out.println("=== Clients du conseiller ID " + conseillerId + " ===");
+            for (Client c : clientsFiltres) {
+                System.out.println("ID: " + c.getId() +
+                        ", Nom: " + c.getNom() +
+                        ", Prénom: " + c.getPrenom() +
+                        ", Email: " + c.getEmail());
+            }
+        }
+
+        return clientsFiltres;
     }
+
+
 }

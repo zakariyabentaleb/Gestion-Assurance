@@ -26,7 +26,7 @@ public class ClientView {
             System.out.println("\n===== Gestion des clients =====");
             System.out.println("1. Ajouter un client");
             System.out.println("2. Supprimer un client");
-            System.out.println("3. Lister tous les clients");
+            System.out.println("3. Afficher la liste des clients d'un conseiller par l'ID du conseiller ");
             System.out.println("4. recherche un client par son id");
             System.out.println("5. recherche un client par son nom");
             System.out.println("6. tri par ordre alphabetique");
@@ -115,10 +115,18 @@ public class ClientView {
         List<Client> sorted = ClientService.TrierParOrdreAlph();
         sorted.forEach(c -> System.out.println(c.getNom() + " " + c.getPrenom()));
     }
-    private void ListerClient() {
+   /* private void ListerClient() {
         System.out.print("Voila tous les Client :  ");
         ClientService.ListerClient();
-    }
+    }*/
+   private void ListerClient() {
+       System.out.print("👉 Entrez l'ID du conseiller : ");
+       int conseillerId = Integer.parseInt(scanner.nextLine()); // lire l'ID du conseiller
+
+       System.out.println("Voila tous les clients du conseiller :");
+       ClientService.ListerClient(conseillerId); // passer l'ID au service
+   }
+
 
 
 }

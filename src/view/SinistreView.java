@@ -67,7 +67,7 @@ public class SinistreView {
                     afficherSinistresSuperieursMontant();
                     break;
 
-                case 8:
+                    case 8:
                     System.out.println("Au revoir !");
                     break;
 
@@ -219,7 +219,5 @@ public class SinistreView {
                                 ", Description: " + s.getDescription()
                 ));
     }
-
-
 
 }

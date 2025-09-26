@@ -1,12 +1,15 @@
 package dao;
 
+import model.entities.Client;
 import model.entities.Contrat;
 import model.entities.Sinistre;
 import model.enums.TypeSinistre;
+import service.ClientService;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class SinistreDAO {
     private static Connection connection;
@@ -78,5 +81,6 @@ public class SinistreDAO {
 
         return sinistres;
     }
+
 
 }

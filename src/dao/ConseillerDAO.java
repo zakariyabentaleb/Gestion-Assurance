@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ConseillerDAO {
 
-    private Connection connection;
+    private  Connection connection;
 
     public ConseillerDAO() {
 
@@ -68,7 +68,7 @@ public class ConseillerDAO {
             String sql = "SELECT * FROM conseiller WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
-             ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 conseiller = new Conseiller();
                 conseiller.setId(rs.getInt("id"));
@@ -76,7 +76,6 @@ public class ConseillerDAO {
                 conseiller.setPrenom(rs.getString("prenom"));
                 conseiller.setEmail(rs.getString("email"));
             }
-
         } catch (SQLException e) {
             System.out.println("Erreur lors de la recherche du conseiller : " + e.getMessage());
         }

@@ -42,7 +42,7 @@ public class ClientDAO {
             System.out.println("Erreur lors de la suppression  du conseiller : " + e.getMessage());
         }
     }
-    public static List<Client> ListerClient() {
+   /* public static List<Client> ListerClient() {
         List<Client> clients = new ArrayList<>();
         Client client = null;
         try {
@@ -63,6 +63,38 @@ public class ClientDAO {
         }
         return clients;
     }
+*/
+   public List<Client> ListerClient() {
+       List<Client> clients = new ArrayList<>();
+       try {
+           String sql = "SELECT * FROM client";
+           PreparedStatement stmt = connection.prepareStatement(sql);
+           ResultSet rs = stmt.executeQuery();
+
+           ConseillerDAO conseillerDAO = new ConseillerDAO(); // <-- instance
+
+           while (rs.next()) {
+               Client client = new Client();
+               client.setId(rs.getInt("id"));
+               client.setNom(rs.getString("nom"));
+               client.setPrenom(rs.getString("prenom"));
+               client.setEmail(rs.getString("email"));
+
+               // --- Récupérer le conseiller associé ---
+               int conseillerId = rs.getInt("conseiller_id"); // la colonne dans la table client
+               if (conseillerId != 0) { // si le client a un conseiller
+                   Conseiller conseiller = conseillerDAO.RechercheConseiller(conseillerId); // <-- instance
+                   client.setConseiller(conseiller);
+               }
+
+               clients.add(client);
+           }
+
+       } catch (SQLException e) {
+           System.out.println("Erreur lors de la récupération des clients : " + e.getMessage());
+       }
+       return clients;
+   }
 
 
 
