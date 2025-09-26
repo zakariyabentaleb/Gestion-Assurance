@@ -32,7 +32,7 @@ public class MenuView {
                     break;
 
                 case 4:
-
+                    gestionduSinistre();
                     break;
 
                 case 5 :
@@ -56,6 +56,10 @@ public class MenuView {
     public void gestionduContrat(){
        ContratView viewContrat = new ContratView();
         ContratView.afficherMenu();
+    }
+    public void gestionduSinistre(){
+        SinistreView viewSinistre = new SinistreView();
+        viewSinistre.afficherMenu();
     }
 }
 

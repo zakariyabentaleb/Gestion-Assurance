@@ -34,7 +34,7 @@ public class ContratDAO {
                     contrat.setId(rs.getInt(1));
                 }
             }
-            System.out.println("✅ Contrat ajouté avec succès !");
+            System.out.println(" Contrat ajouté avec succès !");
         } catch (SQLException e) {
             e.printStackTrace();
         }
