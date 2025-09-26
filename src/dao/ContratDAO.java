@@ -1,5 +1,6 @@
 package dao;
 
+import model.entities.Conseiller;
 import model.entities.Contrat;
 
 import java.sql.*;
@@ -32,5 +33,17 @@ public class ContratDAO {
             e.printStackTrace();
         }
     }
+    public void supprimerContrat(Contrat contrat) {
+        try {
+            String sql = "DELETE FROM contrat WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, contrat.getId());
+            stmt.executeUpdate();
+            System.out.println("Client supprime !");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la suppression  du client : " + e.getMessage());
+        }
+    }
+
 
 }

@@ -19,4 +19,12 @@ public class ContratService {
             System.out.println("Impossible d'ajouter une Contrat nul !");
         }
     }
+    public static void supprimerContrat(Contrat contrat) {
+        if (contrat != null) {
+            contratDAO.supprimerContrat(contrat);
+            System.out.println("Contrat suprimer : " + contrat.getId());
+        } else {
+            System.out.println("Impossible de supprimer un conseiller  !");
+        }
+    }
 }

@@ -29,13 +29,11 @@ public class ContratView {
         int choix;
         do {
             System.out.println("\n===== Gestion des Contrats =====");
-            System.out.println("1. Ajouter un client");
-            System.out.println("2. Supprimer un client");
-            System.out.println("3. Lister tous les clients");
-            System.out.println("4. recherche un client par son id");
-            System.out.println("5. recherche un client par son nom");
-            System.out.println("6. tri par ordre alphabetique");
-            System.out.println("7. Quitter");
+            System.out.println("1. Ajouter une Contrat ");
+            System.out.println("2. Supprimer une Contrat par id ");
+            System.out.println("3. Afficher une contrat par id");
+            System.out.println("4. Afficher les contrats souscrits d’un client donné par l’id client ");
+            System.out.println("5. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine();
@@ -45,7 +43,7 @@ public class ContratView {
                     ajouterContrat();
                     break;
                 case 2:
-
+                    supprimerContrat();
                     break;
                 case 3:
 
@@ -70,7 +68,7 @@ public class ContratView {
                 default:
                     System.out.println("Choix invalide !");
             }
-        } while (choix != 7);
+        } while (choix != 5);
     }
 
     private static void ajouterContrat() {
@@ -124,6 +122,13 @@ public class ContratView {
 
         ContratService.ajouterContrat(contrat);
         System.out.println("✅ Contrat ajouté !");
+    }
+    private static void supprimerContrat() {
+        System.out.print("Entrez l'Id du Client :  ");
+        int  id = scanner.nextInt();
+        Contrat contrat = new Contrat();
+        contrat.setId(id);
+        ContratService.supprimerContrat(contrat);
     }
 
 

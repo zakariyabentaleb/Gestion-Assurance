@@ -24,6 +24,10 @@ public class Contrat {
         this.sinistres = new ArrayList<>();
     }
 
+    public Contrat() {
+
+    }
+
     public void setId(int id) {
         this.id = id;
     }
