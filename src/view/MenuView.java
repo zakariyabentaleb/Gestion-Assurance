@@ -28,7 +28,7 @@ public class MenuView {
                     gestionduConseiller();
                     break;
                 case 3:
-
+                    gestionduContrat();
                     break;
 
                 case 4:
@@ -52,6 +52,10 @@ public class MenuView {
     public void gestionduConseiller(){
         ConseillerView viewCONSEILLER = new ConseillerView();
         viewCONSEILLER.afficherMenu();
+    }
+    public void gestionduContrat(){
+       ContratView viewContrat = new ContratView();
+        ContratView.afficherMenu();
     }
 }
 

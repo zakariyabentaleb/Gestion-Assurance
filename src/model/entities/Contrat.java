@@ -24,6 +24,42 @@ public class Contrat {
         this.sinistres = new ArrayList<>();
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(LocalDate dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public LocalDate getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(LocalDate dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public List<Sinistre> getSinistres() {
+        return sinistres;
+    }
+
+    public void setSinistres(List<Sinistre> sinistres) {
+        this.sinistres = sinistres;
+    }
+
     public TypeContrat getTypeContrat() {
         return typeContrat;
     }
