@@ -7,6 +7,9 @@ import model.entities.Conseiller;
 import model.entities.Contrat;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static dao.ContratDAO.ListerContratt;
 
 public class ContratService {
 
@@ -49,5 +52,16 @@ public class ContratService {
                    );
                });
     }
+    public static List<Contrat> ListerContratParClient(int clientId) {
+        List<Contrat> contrats = ListerContratt(); // tous les contrats avec clients
+
+        return contrats.stream()
+                .filter(c -> c.getClient() != null && c.getClient().getId() == clientId)
+                .collect(Collectors.toList());
+    }
+
+
+
+
 
 }

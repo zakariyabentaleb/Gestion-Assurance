@@ -50,18 +50,10 @@ public class ContratView {
                     break;
 
                 case 4:
-                    ;
+                    ListerContratParClientView() ;
                     break;
 
-                case 5:
-
-                    break;
-
-                case 6:
-
-                    break;
-
-                case 7 :
+                case 5 :
                     System.out.println("Au revoir !");
                     break;
 
@@ -135,6 +127,51 @@ public class ContratView {
         ContratService.ListerContrat();
 
     }
+    public static void afficherContratsParClient() {
+        System.out.println("=== Affichage des contrats d’un client ===");
+
+        // Demande de l’ID du client
+        System.out.print("Entrez l’ID du client : ");
+        int clientId;
+        try {
+            clientId = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("⚠️ ID invalide !");
+            return;
+        }
+
+        // Récupération et affichage des contrats
+        List<Contrat> contrats = ContratService.ListerContratParClient(clientId);
+
+        // Si la liste est vide, un message a déjà été affiché dans le service
+        if (!contrats.isEmpty()) {
+            System.out.println("\nNombre de contrats trouvés : " + contrats.size());
+        }
+    }
+    private static void ListerContratParClientView() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Entrez l'ID du client : ");
+        int clientId = Integer.parseInt(scanner.nextLine());
+
+        List<Contrat> contrats = ContratService.ListerContratParClient(clientId);
+
+        if (contrats.isEmpty()) {
+            System.out.println("Aucun contrat trouvé pour ce client.");
+        } else {
+            System.out.println("Liste des contrats du client ID " + clientId + " :");
+            contrats.forEach(c -> {
+                System.out.println(
+                        "ID Contrat: " + c.getId() +
+                                ", Type: " + c.getTypeContrat() +
+                                ", Début: " + c.getDateDebut() +
+                                ", Fin: " + c.getDateFin()
+                );
+            });
+        }
+    }
+
+
 
 
 

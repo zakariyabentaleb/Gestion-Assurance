@@ -12,13 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO {
-    private static Connection connection;
-
-    public ClientDAO() {
-
-        connection = DatabaseConnection.getInstance().getConnection();
-    }
-    public  void ajouterClient(Client client) {
+    private static Connection connection = DatabaseConnection.getInstance().getConnection();
+    public static void ajouterClient(Client client) {
         try {
             String sql = "INSERT INTO client (nom, prenom, email) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -31,7 +26,7 @@ public class ClientDAO {
             System.out.println("Erreur lors de l'ajout du client : " + e.getMessage());
         }
     }
-    public void supprimerClient(Client client) {
+    public static void supprimerClient(Client client) {
         try {
             String sql = "DELETE FROM client WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -64,7 +59,7 @@ public class ClientDAO {
         return clients;
     }
 */
-   public List<Client> ListerClient() {
+   public static List<Client> ListerClient() {
        List<Client> clients = new ArrayList<>();
        try {
            String sql = "SELECT * FROM client";
@@ -95,7 +90,6 @@ public class ClientDAO {
        }
        return clients;
    }
-
 
 
 

@@ -9,10 +9,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ClientService {
-    private static ClientDAO ClientDAO;
-    public ClientService() {
-        this.ClientDAO = new ClientDAO();
-    }
+
+
 
     public static void ajouterClient(Client client) {
         if (client != null) {
